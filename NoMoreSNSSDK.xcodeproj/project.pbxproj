@@ -79,6 +79,8 @@
 		199549FC24C76C0E008390BB /* TwitterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
 		199549FE24C76C1A008390BB /* FacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
 		19954A0024C76C22008390BB /* GoogleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleViewController.swift; sourceTree = "<group>"; };
+		19954A0224C783DE008390BB /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		19954A0324C783DF008390BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,8 @@
 		199549A424C71BFF008390BB = {
 			isa = PBXGroup;
 			children = (
+				19954A0224C783DE008390BB /* LICENSE */,
+				19954A0324C783DF008390BB /* README.md */,
 				199549D324C72A13008390BB /* dotfiles */,
 				199549DB24C72BFC008390BB /* Dependency */,
 				199549B224C7218B008390BB /* NoMoreSNSSDK */,
