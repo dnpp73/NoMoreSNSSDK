@@ -49,7 +49,8 @@ final class FacebookViewController: UITableViewController {
         }
 
         let facebook = FacebookOAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, scope: scope, callbackURL: callbackURL)
-        // facebook.oauthWebViewControllerDelegate = self
+        facebook.oauthWebViewControllerDelegate = self
+        facebook.callbackURLHandler = self
         facebook.login { (result) -> Void in
             switch result {
             case .success(_):
@@ -136,4 +137,12 @@ extension FacebookViewController: OAuthWebViewControllerDelegate {
         appendConsole(debugLog())
     }
 
+}
+
+extension FacebookViewController: OAuthClientCallbackURLHandler {
+    func oauthClientShouldHandleCallbackURL(handledURL: URL) -> Bool {
+        appendConsole(debugLog(handledURL.absoluteString))
+        appendConsole(debugLog(String(describing: handledURL.queryDictionary)))
+        return true
+    }
 }

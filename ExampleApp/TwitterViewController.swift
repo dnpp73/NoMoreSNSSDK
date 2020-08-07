@@ -46,7 +46,8 @@ final class TwitterViewController: UITableViewController {
         }
 
         let twitter = TwitterOAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, callbackURL: callbackURL)
-        // twitter.oauthWebViewControllerDelegate = self
+        twitter.oauthWebViewControllerDelegate = self
+        twitter.callbackURLHandler = self
         twitter.login { (result) -> Void in
             switch result {
             case .success(_):
@@ -134,4 +135,12 @@ extension TwitterViewController: OAuthWebViewControllerDelegate {
         appendConsole(debugLog())
     }
 
+}
+
+extension TwitterViewController: OAuthClientCallbackURLHandler {
+    func oauthClientShouldHandleCallbackURL(handledURL: URL) -> Bool {
+        appendConsole(debugLog(handledURL.absoluteString))
+        appendConsole(debugLog(String(describing: handledURL.queryDictionary)))
+        return false
+    }
 }

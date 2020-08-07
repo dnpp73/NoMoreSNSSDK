@@ -27,6 +27,7 @@
 		199549FD24C76C0E008390BB /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549FC24C76C0E008390BB /* TwitterViewController.swift */; };
 		199549FF24C76C1A008390BB /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549FE24C76C1A008390BB /* FacebookViewController.swift */; };
 		19954A0124C76C22008390BB /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19954A0024C76C22008390BB /* GoogleViewController.swift */; };
+		19AF750124DD4D8E001F7CE1 /* URL+queryDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF750024DD4D8E001F7CE1 /* URL+queryDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		19954A0024C76C22008390BB /* GoogleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleViewController.swift; sourceTree = "<group>"; };
 		19954A0224C783DE008390BB /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		19954A0324C783DF008390BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		19AF750024DD4D8E001F7CE1 /* URL+queryDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+queryDictionary.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				199549D224C72330008390BB /* Information */,
 				199549BF24C721DF008390BB /* AppDelegate.swift */,
 				199549FA24C7622D008390BB /* DebugLog.swift */,
+				19AF750024DD4D8E001F7CE1 /* URL+queryDictionary.swift */,
 				199549FC24C76C0E008390BB /* TwitterViewController.swift */,
 				199549FE24C76C1A008390BB /* FacebookViewController.swift */,
 				19954A0024C76C22008390BB /* GoogleViewController.swift */,
@@ -386,6 +389,7 @@
 			files = (
 				199549FD24C76C0E008390BB /* TwitterViewController.swift in Sources */,
 				199549FF24C76C1A008390BB /* FacebookViewController.swift in Sources */,
+				19AF750124DD4D8E001F7CE1 /* URL+queryDictionary.swift in Sources */,
 				199549C024C721DF008390BB /* AppDelegate.swift in Sources */,
 				199549FB24C7622D008390BB /* DebugLog.swift in Sources */,
 				19954A0124C76C22008390BB /* GoogleViewController.swift in Sources */,

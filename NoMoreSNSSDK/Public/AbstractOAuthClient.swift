@@ -1,9 +1,14 @@
 import Foundation
 import OAuthSwift
 
+public protocol OAuthClientCallbackURLHandler: AnyObject {
+    func oauthClientShouldHandleCallbackURL(handledURL: URL) -> Bool
+}
+
 public class AbstractOAuthClient {
 
     public weak var oauthWebViewControllerDelegate: OAuthWebViewControllerDelegate?
+    public weak var callbackURLHandler: OAuthClientCallbackURLHandler?
 
     public let callbackURL: URL
 
@@ -29,6 +34,7 @@ public class AbstractOAuthClient {
     internal func createURLHandlerWebViewController() -> OAuthSwiftURLHandlerType {
         let controller = WebViewController(nibName: nil, bundle: Bundle(for: WebViewController.self))
         controller.delegate = oauthWebViewControllerDelegate
+        controller.callbackURLHandler = callbackURLHandler
         controller.callbackURL = callbackURL
         return controller
     }

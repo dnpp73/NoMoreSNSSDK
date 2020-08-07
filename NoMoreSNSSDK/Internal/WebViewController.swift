@@ -6,6 +6,7 @@ final class WebViewController: OAuthWebViewController {
 
     // OAuth Callback URL の指定と同じ URL にすることで URL Scheme の設定をすることなく処理をこちらで握ることが出来る。
     var callbackURL: URL?
+    weak var callbackURLHandler: OAuthClientCallbackURLHandler?
 
     private var targetURL: URL?
 
@@ -70,8 +71,15 @@ extension WebViewController: WKNavigationDelegate {
             let urlString = url.absoluteString
             let redirectUri = callbackURL.absoluteURL
             if let _ = urlString.range(of: "\(redirectUri)?") {
-                // TODO: ここで query parameter を delegate に通知させると良い可能性があるかも？
-                OAuthSwift.handle(url: url)
+                if let callbackURLHandler = callbackURLHandler {
+                    let shouldHandle = callbackURLHandler.oauthClientShouldHandleCallbackURL(handledURL: url)
+                    if shouldHandle {
+                        OAuthSwift.handle(url: url)
+                    }
+                } else {
+                    // Default: Handle URL
+                    OAuthSwift.handle(url: url)
+                }
                 decisionHandler(.cancel)
                 dismissWebViewController()
                 return

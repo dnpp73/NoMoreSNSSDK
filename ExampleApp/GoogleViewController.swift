@@ -49,7 +49,8 @@ final class GoogleViewController: UITableViewController {
         }
 
         let google = GoogleOAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, scope: scope, callbackURL: callbackURL)
-        // google.oauthWebViewControllerDelegate = self
+        google.oauthWebViewControllerDelegate = self
+        google.callbackURLHandler = self
         google.login { (result) -> Void in
             switch result {
             case .success(_):
@@ -136,4 +137,12 @@ extension GoogleViewController: OAuthWebViewControllerDelegate {
         appendConsole(debugLog())
     }
 
+}
+
+extension GoogleViewController: OAuthClientCallbackURLHandler {
+    func oauthClientShouldHandleCallbackURL(handledURL: URL) -> Bool {
+        appendConsole(debugLog(handledURL.absoluteString))
+        appendConsole(debugLog(String(describing: handledURL.queryDictionary)))
+        return true
+    }
 }
