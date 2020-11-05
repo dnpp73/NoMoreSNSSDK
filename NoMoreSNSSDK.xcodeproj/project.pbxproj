@@ -106,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		193396CD255495EA00B7C772 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				199549D624C72ADC008390BB /* Public */,
+				199549EB24C7300C008390BB /* Internal */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		199549A424C71BFF008390BB = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +122,7 @@
 				19954A0324C783DF008390BB /* README.md */,
 				199549D324C72A13008390BB /* dotfiles */,
 				199549DB24C72BFC008390BB /* Dependency */,
+				193396CD255495EA00B7C772 /* Sources */,
 				199549B224C7218B008390BB /* NoMoreSNSSDK */,
 				199549BE24C721DF008390BB /* ExampleApp */,
 				199549B124C7218B008390BB /* Products */,
@@ -132,9 +142,8 @@
 		199549B224C7218B008390BB /* NoMoreSNSSDK */ = {
 			isa = PBXGroup;
 			children = (
-				199549D624C72ADC008390BB /* Public */,
-				199549EB24C7300C008390BB /* Internal */,
-				199549D124C7231F008390BB /* Infomation */,
+				199549B324C7218B008390BB /* NoMoreSNSSDK.h */,
+				199549B424C7218B008390BB /* Info.plist */,
 			);
 			path = NoMoreSNSSDK;
 			sourceTree = "<group>";
@@ -154,15 +163,6 @@
 				199549CA24C721E0008390BB /* LaunchScreen.storyboard */,
 			);
 			path = ExampleApp;
-			sourceTree = "<group>";
-		};
-		199549D124C7231F008390BB /* Infomation */ = {
-			isa = PBXGroup;
-			children = (
-				199549B324C7218B008390BB /* NoMoreSNSSDK.h */,
-				199549B424C7218B008390BB /* Info.plist */,
-			);
-			name = Infomation;
 			sourceTree = "<group>";
 		};
 		199549D224C72330008390BB /* Information */ = {
