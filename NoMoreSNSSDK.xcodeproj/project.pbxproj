@@ -83,6 +83,7 @@
 		19954A0324C783DF008390BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19AF750024DD4D8E001F7CE1 /* URL+queryDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+queryDictionary.swift"; sourceTree = "<group>"; };
 		19ECF04725551A8D00130057 /* WebViewNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewNavigationController.swift; sourceTree = "<group>"; };
+		19ECF04C25552C1400130057 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +119,7 @@
 		199549A424C71BFF008390BB = {
 			isa = PBXGroup;
 			children = (
+				19ECF04C25552C1400130057 /* Package.swift */,
 				19954A0224C783DE008390BB /* LICENSE */,
 				19954A0324C783DF008390BB /* README.md */,
 				199549D324C72A13008390BB /* dotfiles */,
