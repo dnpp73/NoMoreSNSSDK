@@ -18,7 +18,6 @@
 		199549E824C72CE0008390BB /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199549DF24C72CCC008390BB /* OAuthSwift.framework */; };
 		199549E924C72CE0008390BB /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 199549DF24C72CCC008390BB /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		199549EE24C7304B008390BB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549EC24C7304B008390BB /* WebViewController.swift */; };
-		199549EF24C7304B008390BB /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 199549ED24C7304B008390BB /* WebViewController.xib */; };
 		199549F324C737AC008390BB /* TwitterOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549F224C737AC008390BB /* TwitterOAuthClient.swift */; };
 		199549F524C73FD0008390BB /* AbstractOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549F424C73FD0008390BB /* AbstractOAuthClient.swift */; };
 		199549F724C75547008390BB /* FacebookOAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549F624C75547008390BB /* FacebookOAuthClient.swift */; };
@@ -28,6 +27,7 @@
 		199549FF24C76C1A008390BB /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199549FE24C76C1A008390BB /* FacebookViewController.swift */; };
 		19954A0124C76C22008390BB /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19954A0024C76C22008390BB /* GoogleViewController.swift */; };
 		19AF750124DD4D8E001F7CE1 /* URL+queryDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AF750024DD4D8E001F7CE1 /* URL+queryDictionary.swift */; };
+		19ECF04825551A8D00130057 /* WebViewNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ECF04725551A8D00130057 /* WebViewNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,6 @@
 		199549DD24C72CB7008390BB /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		199549DF24C72CCC008390BB /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		199549EC24C7304B008390BB /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		199549ED24C7304B008390BB /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		199549F224C737AC008390BB /* TwitterOAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterOAuthClient.swift; sourceTree = "<group>"; };
 		199549F424C73FD0008390BB /* AbstractOAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractOAuthClient.swift; sourceTree = "<group>"; };
 		199549F624C75547008390BB /* FacebookOAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookOAuthClient.swift; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		19954A0224C783DE008390BB /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		19954A0324C783DF008390BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19AF750024DD4D8E001F7CE1 /* URL+queryDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+queryDictionary.swift"; sourceTree = "<group>"; };
+		19ECF04725551A8D00130057 /* WebViewNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,8 +213,8 @@
 		199549EB24C7300C008390BB /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				19ECF04725551A8D00130057 /* WebViewNavigationController.swift */,
 				199549EC24C7304B008390BB /* WebViewController.swift */,
-				199549ED24C7304B008390BB /* WebViewController.xib */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -315,7 +315,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				199549EF24C7304B008390BB /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +379,7 @@
 				199549F324C737AC008390BB /* TwitterOAuthClient.swift in Sources */,
 				199549F924C75550008390BB /* GoogleOAuthClient.swift in Sources */,
 				199549F524C73FD0008390BB /* AbstractOAuthClient.swift in Sources */,
+				19ECF04825551A8D00130057 /* WebViewNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

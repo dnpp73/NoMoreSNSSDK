@@ -141,6 +141,6 @@ extension TwitterViewController: OAuthClientCallbackURLHandler {
     func oauthClientShouldHandleCallbackURL(handledURL: URL) -> Bool {
         appendConsole(debugLog(handledURL.absoluteString))
         appendConsole(debugLog(String(describing: handledURL.queryDictionary)))
-        return false
+        return true
     }
 }

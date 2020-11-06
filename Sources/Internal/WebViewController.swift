@@ -7,33 +7,9 @@ final class WebViewController: OAuthWebViewController {
     // OAuth Callback URL の指定と同じ URL にすることで URL Scheme の設定をすることなく処理をこちらで握ることが出来る。
     var callbackURL: URL?
     weak var callbackURLHandler: OAuthClientCallbackURLHandler?
-
     private var targetURL: URL?
-
     private var observer: NSKeyValueObservation?
-
-    @IBOutlet private var customNavigationItem: UINavigationItem!
-
-    @IBOutlet private var webView: WKWebView! {
-        didSet {
-            if let webView = webView {
-                webView.navigationDelegate = self
-
-                // for Google login hack
-                webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Mobile/15E148 Safari/604.1"
-
-                // for set Title
-                observer?.invalidate()
-                observer = webView.observe(\.title, options: [.new]) { (webView, change) -> Void in
-                    guard let optionalTitle = change.newValue, let title = optionalTitle, !title.isEmpty else {
-                        self.title = nil
-                        return
-                    }
-                    self.title = title
-                }
-            }
-        }
-    }
+    private var webView: WKWebView?
 
     deinit {
         observer?.invalidate()
@@ -41,22 +17,68 @@ final class WebViewController: OAuthWebViewController {
 
     override var title: String? {
         didSet {
-            customNavigationItem.title = title
+            navigationController?.title = title
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let configuration = WKWebViewConfiguration()
+        configuration.allowsAirPlayForMediaPlayback = false
+        configuration.allowsInlineMediaPlayback = false
+        configuration.allowsPictureInPictureMediaPlayback = false
+        let webView = WKWebView(frame: view.bounds, configuration: configuration)
+        webView.navigationDelegate = self
+
+        webView.allowsLinkPreview = false
+        webView.allowsBackForwardNavigationGestures = false
+
+        // for Google login hack
+        webView.customUserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Mobile/15E148 Safari/604.1"
+
+        // for set Title
+        observer?.invalidate()
+        observer = webView.observe(\.title, options: [.new]) { (webView, change) -> Void in
+            guard let optionalTitle = change.newValue, let title = optionalTitle, !title.isEmpty else {
+                self.title = nil
+                return
+            }
+            self.title = title
+        }
+
+        view.addSubview(webView)
+        webView.addConstraintsToSuperviewEdges()
+        self.webView = webView
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleActionCancelBarButtonItem(_:)))
+    }
+
+    override func doHandle(_ url: URL) {
+        // nop.
+        // WebViewNavigationController の方で present する実装にするので事故回避のため空実装で override.
+    }
+
     override func handle(_ url: URL) {
+        // don't need call super method.
         targetURL = url
-        super.handle(url)
-        if let url = targetURL {
+        if let url = targetURL, let webView = webView {
             DispatchQueue.main.async {
-                let req = URLRequest(url: url)
-                self.webView.load(req)
+                webView.load(URLRequest(url: url))
             }
         }
     }
 
-    @IBAction private func handleActionCancelBarButtonItem(_ sender: UIBarButtonItem) {
+    override func dismissWebViewController() {
+        // don't need call super method.
+        let completion: () -> Void = { [unowned self] in
+            self.delegate?.oauthWebViewControllerDidDismiss()
+        }
+        navigationController?.dismiss(animated: dismissViewControllerAnimated, completion: completion)
+    }
+
+    @objc
+    private func handleActionCancelBarButtonItem(_ sender: UIBarButtonItem) {
         dismissWebViewController()
     }
 }
@@ -93,4 +115,23 @@ extension WebViewController: WKNavigationDelegate {
         dismissWebViewController()
     }
 
+}
+
+extension UIView {
+    fileprivate func addConstraintsToEdges(_ targetView: UIView) {
+        // 制約を満たせるような View 階層になってないと実行時に落ちる (AutoLayout の仕様) ため、使うときは注意。
+        translatesAutoresizingMaskIntoConstraints = false
+        leftAnchor.constraint(equalTo: targetView.leftAnchor).isActive = true
+        rightAnchor.constraint(equalTo: targetView.rightAnchor).isActive = true
+        topAnchor.constraint(equalTo: targetView.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: targetView.bottomAnchor).isActive = true
+    }
+
+    fileprivate func addConstraintsToSuperviewEdges() {
+        // こちらは上のメソッドと違い、常に superview を見ているため安全に叩ける。
+        guard let superview = superview else {
+            return
+        }
+        addConstraintsToEdges(superview)
+    }
 }

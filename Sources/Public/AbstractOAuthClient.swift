@@ -32,11 +32,12 @@ public class AbstractOAuthClient {
     }
 
     internal func createURLHandlerWebViewController() -> OAuthSwiftURLHandlerType {
-        let controller = WebViewController(nibName: nil, bundle: Bundle(for: WebViewController.self))
+        let controller = WebViewController()
         controller.delegate = oauthWebViewControllerDelegate
         controller.callbackURLHandler = callbackURLHandler
         controller.callbackURL = callbackURL
-        return controller
+        let navigationController = WebViewNavigationController(rootViewController: controller)
+        return navigationController
     }
 
 }
